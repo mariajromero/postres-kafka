@@ -5,15 +5,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Map;
+
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
-public class PedidoExterno {
-    private Integer serial;
-    private String nombre;
-    private String fecha;
-   private  Float precioConDescuento;
+
+public record PedidoExterno( Integer serial,
+        String nombre,
+        String fecha,
+        Float precioConDescuento) implements PedidoInterno{
+
+
 
     @Override
     public String toString() {
@@ -23,5 +25,28 @@ public class PedidoExterno {
                 ", fecha='" + fecha + '\'' +
                 ", precioConDescuento=" + precioConDescuento +
                 '}';
+    }
+
+
+
+
+    @Override
+    public Integer getSerial() {
+        return null;
+    }
+
+    @Override
+    public String getNombre() {
+        return this.nombre;
+    }
+
+    @Override
+    public String getFecha() {
+        return this.fecha;
+    }
+
+    @Override
+    public Float getPrecioConDescuento() {
+        return this.precioConDescuento;
     }
 }
